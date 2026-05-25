@@ -1,7 +1,8 @@
 from typing import List
 
+
 class Student:
-    
+
     def __init__(self, name: str, age: int, grades: List[float]):
         self.name = name
         self.age = age
@@ -10,8 +11,10 @@ class Student:
     # def get_avg_grades(self):
     #     return sum(self.grades) / len(self.grades)
 
+
 def get_avg_grades(student):
     return sum(student.grades) / len(student.grades)
+
 
 student1 = Student("Ivan", 20, [5, 4, 5, 3])
 student2 = Student("Michael", 19, [4, 3, 5, 4])
@@ -35,8 +38,16 @@ student9 = Student("Nikita", 23, [3, 3, 4, 2])
 student10 = Student("Victoria", 20, [5, 5, 3, 5])
 
 students = [
-    student1, student2, student3, student4, student5,
-    student6, student7, student8, student9, student10
+    student1,
+    student2,
+    student3,
+    student4,
+    student5,
+    student6,
+    student7,
+    student8,
+    student9,
+    student10,
 ]
 
 for stud in students:

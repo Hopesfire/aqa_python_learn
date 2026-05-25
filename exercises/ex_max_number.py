@@ -7,7 +7,7 @@ num_list = [2345, 52, 86, 2453, 646, 6427, 23, 864, 239]
 #     if i > stack[0]:
 #         stack.pop()
 #         stack.append(i)
-    
+
 # print(stack[0])
 
 max_num = num_list[0]

@@ -5,8 +5,10 @@ class Lead:
     # def change_name(self, new_name):
     #     self.name = new_name
 
+
 def change_name(lead, new_name):
     lead.name = new_name
+
 
 lead_ex = Lead("Ivan")
 print(lead_ex.name)

@@ -5,8 +5,9 @@ MAX_LOAD = 85
 ITERATIONS = 10
 DELAY = 0.2
 
+
 class Solution:
-    
+
     @staticmethod
     def numbers_practice():
         numbers = list(range(1, 8))
@@ -32,6 +33,7 @@ class Solution:
             print(message)
             time.sleep(DELAY)
             iteration += 1
+
 
 Solution.numbers_practice()
 Solution.words_practice()
