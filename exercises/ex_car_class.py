@@ -6,7 +6,7 @@ class Car:
 
     def print_car_info(self):
         return f"Марка: {self.brand}, модель: {self.model}, год выпуска: {self.year}"
-    
+
 
 car1 = Car("Mercedes", "C-Class", 2020)
 car2 = Car("BMW", "X5", 1999)

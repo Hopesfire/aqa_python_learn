@@ -16,5 +16,6 @@ def number_to_day(number):
             return "Sunday"
         case _:
             return None
-        
+
+
 print(number_to_day(5))
