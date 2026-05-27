@@ -2,6 +2,7 @@ import pytest
 
 shared = []
 
+
 @pytest.fixture
 def data():
     shared.extend([1, 2, 3])

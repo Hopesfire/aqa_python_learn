@@ -22,8 +22,10 @@ class TestUser:
     def test_user_still_logged_in(self, user):
         assert user["logged_in"] is True
 
+
 def test_user_still_logged_in(user):
-        assert user["logged_in"] is True
+    assert user["logged_in"] is True
+
 
 def test_number_from_conftest(number_from_conftest):
     assert number_from_conftest == 12
