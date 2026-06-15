@@ -7,6 +7,19 @@ class Student:
         self.age = age
         self.grades = grades
 
+    def add_grade(self, grade):
+        if 0 <= grade <= 5:
+            self.grades.append(grade)
+
+    def best_grade(self):
+        return max(self.grades) if self.grades else None
+    
+    def worst_grade(self):
+        return min(self.grades) if self.grades else None
+    
+    def info(self):
+        return f"Студент: {self.name}, возраст: {self.age}, оценки: {self.grades}"
+
     # def get_avg_grades(self):
     #     return sum(self.grades) / len(self.grades)
 
@@ -24,6 +37,11 @@ student3 = Student("Alex", 21, [3, 2, 3, 3])
 print(get_avg_grades(student1))
 print(get_avg_grades(student2))
 print(get_avg_grades(student3))
+print("\n")
+
+print(student1.best_grade())
+print(student2.worst_grade())
+print(student3.info())
 print("\n")
 
 student4 = Student("Olga", 22, [5, 5, 4, 5])
