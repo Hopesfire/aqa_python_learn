@@ -16,7 +16,7 @@ def test_success_login(browser):
     login_page.open_login_page()
     login_page.login(USERNAME, PASSWORD)
 
-    assert login_page.is_login_succesful()
+    assert login_page.is_login_successful()
 
 
 @pytest.mark.ui

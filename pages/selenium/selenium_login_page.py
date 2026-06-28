@@ -26,7 +26,7 @@ class SeleniumGithubLoginPage(SeleniumGithubBasePage):
     def avatar_locator(self):
         return self.find_element(self.AVATAR_TEST_ID)
 
-    def is_login_succesful(self):
+    def is_login_successful(self):
         return self.avatar_locator().is_displayed()
 
     def is_alert_present(self):
