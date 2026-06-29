@@ -24,14 +24,18 @@ def test_success_login(browser):
 @pytest.mark.skipif(
     not USERNAME or not PASSWORD, reason="Username/Password is not provided"
 )
-def test_invalid_login(browser):
+@pytest.mark.parametrize("username, password", [
+    pytest.param(USERNAME, "wrong_password", id="wrong-password"),
+    pytest.param("Test", PASSWORD, id="wrong-user")
+])
+def test_invalid_login(browser, username, password):
 
     login_page = SeleniumGithubLoginPage(browser)
 
     login_page.open_login_page()
-    login_page.login(USERNAME, "wrong_password")
+    login_page.login(username, password)
 
     assert login_page.is_alert_present()
     assert (
-        SeleniumGithubLoginPage.EXPECTED_ERROR_TEXT in login_page.alert_locator().text
+        SeleniumGithubLoginPage.EXPECTED_ERROR_TEXT in login_page.get_alert_text()
     )

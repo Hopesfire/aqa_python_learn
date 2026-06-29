@@ -27,12 +27,16 @@ def test_success_login(page):
 @pytest.mark.skipif(
     not USERNAME or not PASSWORD, reason="Username/Password is not provided"
 )
-def test_invalid_login(page):
+@pytest.mark.parametrize("username, password", [
+    pytest.param(USERNAME, "wrong_password", id="wrong-password"),
+    pytest.param("Test", PASSWORD, id="wrong-user")
+])
+def test_invalid_login(page, username, password):
 
     login_page = PlaywrightGithubLoginPage(page)
 
     login_page.open_login_page()
-    login_page.login(USERNAME, "wrong_password")
+    login_page.login(username, password)
 
     error = login_page.alert_locator()
     expect(error).to_be_visible()
