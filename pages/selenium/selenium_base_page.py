@@ -1,3 +1,4 @@
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -19,3 +20,7 @@ class SeleniumGithubBasePage:
             EC.element_to_be_clickable(locator),
             message=f"Element not clickable by locator {locator}",
         )
+
+    def hover(self, locator):
+        element = self.find_element(locator)
+        ActionChains(self.driver).move_to_element(element).perform()

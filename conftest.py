@@ -1,4 +1,5 @@
 import pytest
+from faker import Faker
 from playwright.sync_api import sync_playwright
 from selenium import webdriver
 
@@ -22,3 +23,8 @@ def page():
         yield page
 
         browser.close()
+
+
+@pytest.fixture
+def fake():
+    return Faker()
