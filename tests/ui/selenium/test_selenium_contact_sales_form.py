@@ -1,14 +1,16 @@
 import pytest
 
-from pages.selenium.selenium_cicd_page import SeleniumGithubCiCdPage
-from pages.selenium.selenium_contact_sales_page import \
+from pages.selenium.github.selenium_cicd_page import SeleniumGithubCiCdPage
+from pages.selenium.github.selenium_contact_sales_page import \
     SeleniumGithubContactSalesPage
-from pages.selenium.selenium_home_page import SeleniumGithubHomePage
-from pages.selenium.selenium_solutions_menu import SeleniumGithubSolutionMenu
+from pages.selenium.github.selenium_home_page import SeleniumGithubHomePage
+from pages.selenium.github.selenium_solutions_menu import \
+    SeleniumGithubSolutionMenu
 
 
 @pytest.mark.ui
 @pytest.mark.selenium
+@pytest.mark.github
 def test_contact_sales_form(browser, fake):
 
     home_page = SeleniumGithubHomePage(browser)

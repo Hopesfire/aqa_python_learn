@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from pages.selenium.selenium_base_page import SeleniumGithubBasePage
+from pages.selenium.github.selenium_base_page import SeleniumGithubBasePage
 
 
 class SeleniumGithubSolutionMenu(SeleniumGithubBasePage):

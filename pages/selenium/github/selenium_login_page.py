@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from pages.selenium.selenium_base_page import SeleniumGithubBasePage
+from pages.selenium.github.selenium_base_page import SeleniumGithubBasePage
 
 
 class SeleniumGithubLoginPage(SeleniumGithubBasePage):
@@ -31,6 +31,6 @@ class SeleniumGithubLoginPage(SeleniumGithubBasePage):
 
     def is_alert_present(self):
         return self.alert_locator().is_displayed()
-    
+
     def get_alert_text(self):
         return self.alert_locator().text
