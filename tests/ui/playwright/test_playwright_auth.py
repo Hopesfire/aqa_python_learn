@@ -2,11 +2,13 @@ import pytest
 from playwright.sync_api import expect
 
 from config import PASSWORD, USERNAME
-from pages.playwright.playwright_login_page import PlaywrightGithubLoginPage
+from pages.playwright.github.playwright_login_page import \
+    PlaywrightGithubLoginPage
 
 
 @pytest.mark.ui
 @pytest.mark.playwright
+@pytest.mark.github
 @pytest.mark.skipif(
     not USERNAME or not PASSWORD, reason="Username/Password is not provided"
 )
@@ -24,13 +26,17 @@ def test_success_login(page):
 
 @pytest.mark.ui
 @pytest.mark.playwright
+@pytest.mark.github
 @pytest.mark.skipif(
     not USERNAME or not PASSWORD, reason="Username/Password is not provided"
 )
-@pytest.mark.parametrize("username, password", [
-    pytest.param(USERNAME, "wrong_password", id="wrong-password"),
-    pytest.param("Test", PASSWORD, id="wrong-user")
-])
+@pytest.mark.parametrize(
+    "username, password",
+    [
+        pytest.param(USERNAME, "wrong_password", id="wrong-password"),
+        pytest.param("Test", PASSWORD, id="wrong-user"),
+    ],
+)
 def test_invalid_login(page, username, password):
 
     login_page = PlaywrightGithubLoginPage(page)

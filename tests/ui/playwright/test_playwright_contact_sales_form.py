@@ -1,12 +1,18 @@
 import pytest
 
-from pages.playwright.playwright_solutions_menu import PlaywrightGithubSolutionMenu
-from pages.playwright.playwright_cicd_page import PlaywrightGithubCiCdPage
-from pages.playwright.playwright_contact_sales_page import PlaywrightGithubContactSalesPage
-from pages.playwright.playwright_home_page import PlaywrightGithubHomePage
+from pages.playwright.github.playwright_cicd_page import \
+    PlaywrightGithubCiCdPage
+from pages.playwright.github.playwright_contact_sales_page import \
+    PlaywrightGithubContactSalesPage
+from pages.playwright.github.playwright_home_page import \
+    PlaywrightGithubHomePage
+from pages.playwright.github.playwright_solutions_menu import \
+    PlaywrightGithubSolutionMenu
+
 
 @pytest.mark.ui
 @pytest.mark.playwright
+@pytest.mark.github
 def test_contact_sales_form(page, fake):
 
     home_page = PlaywrightGithubHomePage(page)
@@ -24,9 +30,11 @@ def test_contact_sales_form(page, fake):
     last_name = fake.last_name()
     contact_page.fill_form(first_name, last_name)
 
-    assert contact_page.get_field_value(
-        PlaywrightGithubContactSalesPage.FIRST_NAME_FIELD
-    ) == first_name
-    assert contact_page.get_field_value(
-        PlaywrightGithubContactSalesPage.LAST_NAME_FIELD
-    ) == last_name
+    assert (
+        contact_page.get_field_value(PlaywrightGithubContactSalesPage.FIRST_NAME_FIELD)
+        == first_name
+    )
+    assert (
+        contact_page.get_field_value(PlaywrightGithubContactSalesPage.LAST_NAME_FIELD)
+        == last_name
+    )

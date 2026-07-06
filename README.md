@@ -57,6 +57,8 @@ Run all UI tests:
 ```bash
 pytest -m ui
 ```
+> **Note:** DuckDuckGo search tests may occasionally fail due to site unavailability.
+> Skip with `pytest -m "ui and not duckduckgo"`
 
 Run Playwright tests only:
 ```bash
