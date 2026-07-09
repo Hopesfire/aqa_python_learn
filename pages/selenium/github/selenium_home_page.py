@@ -7,7 +7,7 @@ class SeleniumGithubHomePage(SeleniumGithubBasePage):
 
     SOLUTIONS_MENU = (
         By.XPATH,
-        "//button[contains(@class, 'js-details-target') and normalize-space(text())='Solutions']",
+        "//button[normalize-space()='Solutions']"
     )
 
     def open(self):
