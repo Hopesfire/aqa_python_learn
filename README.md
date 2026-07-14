@@ -48,8 +48,20 @@ cp .env.example .env
 |---|---|---|
 | `GH_USER` | GitHub username | Yes (UI tests) |
 | `GH_PASS` | GitHub password | Yes (UI tests) |
+| `REQRES_API_KEY` | Reqres API key | Yes (API tests) |
+| `REQRES_EMAIL` | Reqres login email | Yes (API tests) |
+| `REQRES_PASSWORD` | Reqres login password | Yes (API tests) |
 
-Without these variables UI login tests will be skipped automatically.
+Without 'GH_USER', 'GH_PASS' variables UI login tests will be skipped automatically.
+
+Without 'REQRES_API_KEY' variable API tests will be skipped automatically.
+
+## How to Run API Tests
+
+Run all API tests:
+```bash
+pytest -m api
+```
 
 ## How to Run UI Tests
 
