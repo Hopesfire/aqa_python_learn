@@ -7,7 +7,9 @@ class SeleniumGithubTopicsPage(SeleniumGithubBasePage):
 
     TOPICS_HEADING = (By.XPATH, "//h2[normalize-space()='Popular topics']")
     TOPICS_SELECTOR = "a.topic-tag[href^='/topics/']"
-    EXPECTED_TOPICS = {"python", }
+    EXPECTED_TOPICS = {
+        "python",
+    }
 
     def open_topics_page(self):
         self.driver.get(self.base_url + "/topics")

@@ -1,7 +1,6 @@
 import pytest
 
-from pages.playwright.github.playwright_topics_page import \
-    PlaywrightGithubTopicsPage
+from pages.playwright.github.playwright_topics_page import PlaywrightGithubTopicsPage
 
 
 @pytest.mark.ui

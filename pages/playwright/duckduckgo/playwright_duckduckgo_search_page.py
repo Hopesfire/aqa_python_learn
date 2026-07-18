@@ -1,5 +1,6 @@
-from pages.playwright.duckduckgo.playwright_duckduckgo_base_page import \
-    PlaywrightDuckduckgoBasePage
+from pages.playwright.duckduckgo.playwright_duckduckgo_base_page import (
+    PlaywrightDuckduckgoBasePage,
+)
 
 
 class PlaywrightDuckduckgoSearchPage(PlaywrightDuckduckgoBasePage):

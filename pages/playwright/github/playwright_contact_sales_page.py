@@ -1,5 +1,4 @@
-from pages.playwright.github.playwright_base_page import \
-    PlaywrightGithubBasePage
+from pages.playwright.github.playwright_base_page import PlaywrightGithubBasePage
 
 
 class PlaywrightGithubContactSalesPage(PlaywrightGithubBasePage):

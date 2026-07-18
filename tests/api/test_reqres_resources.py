@@ -6,14 +6,10 @@ from models.reqres_models import ReqresResourcesResponse
 
 
 @pytest.mark.api
-@pytest.mark.skipif(
-    not REQRES_API_KEY,
-    reason="REQRES_API_KEY is not provided"
-)
+@pytest.mark.skipif(not REQRES_API_KEY, reason="REQRES_API_KEY is not provided")
 def test_reqres_resources():
     response = requests.get(
-        f"{REQRES_URL}/api/unknown",
-        headers={"x-api-key": REQRES_API_KEY}
+        f"{REQRES_URL}/api/unknown", headers={"x-api-key": REQRES_API_KEY}
     )
 
     assert response.status_code == 200

@@ -7,7 +7,7 @@ from config import REQRES_API_KEY, REQRES_EMAIL, REQRES_PASSWORD, REQRES_URL
 @pytest.mark.api
 @pytest.mark.skipif(
     not all([REQRES_API_KEY, REQRES_EMAIL, REQRES_PASSWORD]),
-    reason="Reqres credentials are not provided"
+    reason="Reqres credentials are not provided",
 )
 def test_reqres_login():
     response = requests.post(

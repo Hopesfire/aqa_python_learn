@@ -6,10 +6,7 @@ from models.reqres_models import ReqresUsersResponse
 
 
 @pytest.mark.api
-@pytest.mark.skipif(
-    not REQRES_API_KEY,
-    reason="REQRES_API_KEY is not provided"
-)
+@pytest.mark.skipif(not REQRES_API_KEY, reason="REQRES_API_KEY is not provided")
 def test_reqres_users():
     response = requests.get(
         f"{REQRES_URL}/api/users?page=2", headers={"x-api-key": REQRES_API_KEY}

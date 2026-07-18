@@ -1,7 +1,8 @@
 from selenium.webdriver.common.by import By
 
-from pages.selenium.duckduckgo.selenium_duckduckgo_base_page import \
-    SeleniumDuckduckgoBasePage
+from pages.selenium.duckduckgo.selenium_duckduckgo_base_page import (
+    SeleniumDuckduckgoBasePage,
+)
 
 
 class SeleniumDuckduckgoSearchPage(SeleniumDuckduckgoBasePage):

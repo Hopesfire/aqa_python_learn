@@ -1,8 +1,9 @@
 import pytest
 from playwright.sync_api import expect
 
-from pages.playwright.duckduckgo.playwright_duckduckgo_search_page import \
-    PlaywrightDuckduckgoSearchPage
+from pages.playwright.duckduckgo.playwright_duckduckgo_search_page import (
+    PlaywrightDuckduckgoSearchPage,
+)
 
 
 @pytest.mark.ui

@@ -2,8 +2,7 @@ import pytest
 from playwright.sync_api import expect
 
 from config import PASSWORD, USERNAME
-from pages.playwright.github.playwright_login_page import \
-    PlaywrightGithubLoginPage
+from pages.playwright.github.playwright_login_page import PlaywrightGithubLoginPage
 
 
 @pytest.mark.ui

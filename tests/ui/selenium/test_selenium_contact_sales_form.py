@@ -1,11 +1,11 @@
 import pytest
 
 from pages.selenium.github.selenium_cicd_page import SeleniumGithubCiCdPage
-from pages.selenium.github.selenium_contact_sales_page import \
-    SeleniumGithubContactSalesPage
+from pages.selenium.github.selenium_contact_sales_page import (
+    SeleniumGithubContactSalesPage,
+)
 from pages.selenium.github.selenium_home_page import SeleniumGithubHomePage
-from pages.selenium.github.selenium_solutions_menu import \
-    SeleniumGithubSolutionMenu
+from pages.selenium.github.selenium_solutions_menu import SeleniumGithubSolutionMenu
 
 
 @pytest.mark.ui

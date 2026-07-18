@@ -1,7 +1,8 @@
 import pytest
 
-from pages.selenium.duckduckgo.selenium_duckduckgo_search_page import \
-    SeleniumDuckduckgoSearchPage
+from pages.selenium.duckduckgo.selenium_duckduckgo_search_page import (
+    SeleniumDuckduckgoSearchPage,
+)
 
 
 @pytest.mark.ui

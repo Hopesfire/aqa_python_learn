@@ -1,13 +1,13 @@
 import pytest
 
-from pages.playwright.github.playwright_cicd_page import \
-    PlaywrightGithubCiCdPage
-from pages.playwright.github.playwright_contact_sales_page import \
-    PlaywrightGithubContactSalesPage
-from pages.playwright.github.playwright_home_page import \
-    PlaywrightGithubHomePage
-from pages.playwright.github.playwright_solutions_menu import \
-    PlaywrightGithubSolutionMenu
+from pages.playwright.github.playwright_cicd_page import PlaywrightGithubCiCdPage
+from pages.playwright.github.playwright_contact_sales_page import (
+    PlaywrightGithubContactSalesPage,
+)
+from pages.playwright.github.playwright_home_page import PlaywrightGithubHomePage
+from pages.playwright.github.playwright_solutions_menu import (
+    PlaywrightGithubSolutionMenu,
+)
 
 
 @pytest.mark.ui

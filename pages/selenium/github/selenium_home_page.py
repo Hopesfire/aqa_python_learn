@@ -5,10 +5,7 @@ from pages.selenium.github.selenium_base_page import SeleniumGithubBasePage
 
 class SeleniumGithubHomePage(SeleniumGithubBasePage):
 
-    SOLUTIONS_MENU = (
-        By.XPATH,
-        "//button[normalize-space()='Solutions']"
-    )
+    SOLUTIONS_MENU = (By.XPATH, "//button[normalize-space()='Solutions']")
 
     def open(self):
         self.driver.get(self.base_url)
