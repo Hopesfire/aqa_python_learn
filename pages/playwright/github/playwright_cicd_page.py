@@ -12,3 +12,4 @@ class PlaywrightGithubCiCdPage(PlaywrightGithubBasePage):
 
     def click_contact_sales(self):
         self.contact_sales_button().click()
+        self.page.wait_for_url("**/enterprise/contact**")
