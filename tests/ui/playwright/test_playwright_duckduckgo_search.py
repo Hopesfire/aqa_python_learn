@@ -1,8 +1,10 @@
+import allure
 import pytest
 from playwright.sync_api import expect
 
-from pages.playwright.duckduckgo.playwright_duckduckgo_search_page import \
-    PlaywrightDuckduckgoSearchPage
+from pages.playwright.duckduckgo.playwright_duckduckgo_search_page import (
+    PlaywrightDuckduckgoSearchPage,
+)
 
 
 @pytest.mark.ui
@@ -16,6 +18,7 @@ def test_duckduckgo_search(page, query):
     search_page.open()
     search_page.search(query)
 
-    results = search_page.get_results()
-    expect(results.nth(5)).to_be_visible()
-    assert results.count() > 5
+    with allure.step("Verify search results are displayed"):
+        results = search_page.get_results()
+        expect(results.nth(5)).to_be_visible()
+        assert results.count() > 5

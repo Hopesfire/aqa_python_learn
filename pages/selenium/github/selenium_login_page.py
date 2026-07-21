@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from pages.selenium.github.selenium_base_page import SeleniumGithubBasePage
@@ -12,13 +13,15 @@ class SeleniumGithubLoginPage(SeleniumGithubBasePage):
     ALERT_SELECTOR = (By.CSS_SELECTOR, "[role='alert']")
     EXPECTED_ERROR_TEXT = "Incorrect username or password"
 
+    @allure.step("Open GitHub login page")
     def open_login_page(self):
         self.driver.get(self.base_url + "/login")
 
     def login(self, username, password):
-        self.find_element(self.USERNAME_LABEL).send_keys(username)
-        self.find_element(self.PASSWORD_LABEL).send_keys(password)
-        self.find_clickable_element(self.SIGNIN_SELECTOR).click()
+        with allure.step(f"Login with username '{username}'"):
+            self.find_element(self.USERNAME_LABEL).send_keys(username)
+            self.find_element(self.PASSWORD_LABEL).send_keys(password)
+            self.find_clickable_element(self.SIGNIN_SELECTOR).click()
 
     def alert_locator(self):
         return self.find_element(self.ALERT_SELECTOR)

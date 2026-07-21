@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from config import PASSWORD, USERNAME
@@ -17,7 +18,8 @@ def test_success_login(browser):
     login_page.open_login_page()
     login_page.login(USERNAME, PASSWORD)
 
-    assert login_page.is_login_successful()
+    with allure.step("Verify login was successful"):
+        assert login_page.is_login_successful()
 
 
 @pytest.mark.ui
@@ -27,18 +29,22 @@ def test_success_login(browser):
     not USERNAME or not PASSWORD, reason="Username/Password is not provided"
 )
 @pytest.mark.parametrize(
-    "username, password",
+    "username, use_correct_password",
     [
-        pytest.param(USERNAME, "wrong_password", id="wrong-password"),
-        pytest.param("Test", PASSWORD, id="wrong-user"),
+        pytest.param(USERNAME, False, id="wrong-password"),
+        pytest.param("Test", True, id="wrong-user"),
     ],
 )
-def test_invalid_login(browser, username, password):
+def test_invalid_login(browser, username, use_correct_password):
+    password = PASSWORD if use_correct_password else "wrong_password"
 
     login_page = SeleniumGithubLoginPage(browser)
 
     login_page.open_login_page()
     login_page.login(username, password)
 
-    assert login_page.is_alert_present()
-    assert SeleniumGithubLoginPage.EXPECTED_ERROR_TEXT in login_page.get_alert_text()
+    with allure.step("Verify error message is shown"):
+        assert login_page.is_alert_present()
+        assert (
+            SeleniumGithubLoginPage.EXPECTED_ERROR_TEXT in login_page.get_alert_text()
+        )

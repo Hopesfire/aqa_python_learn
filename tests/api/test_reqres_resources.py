@@ -1,3 +1,4 @@
+import allure
 import pytest
 import requests
 
@@ -6,21 +7,19 @@ from models.reqres_models import ReqresResourcesResponse
 
 
 @pytest.mark.api
-@pytest.mark.skipif(
-    not REQRES_API_KEY,
-    reason="REQRES_API_KEY is not provided"
-)
+@pytest.mark.skipif(not REQRES_API_KEY, reason="REQRES_API_KEY is not provided")
 def test_reqres_resources():
-    response = requests.get(
-        f"{REQRES_URL}/api/unknown",
-        headers={"x-api-key": REQRES_API_KEY}
-    )
+    with allure.step("Send resources request to reqres.in"):
+        response = requests.get(
+            f"{REQRES_URL}/api/unknown", headers={"x-api-key": REQRES_API_KEY}
+        )
 
-    assert response.status_code == 200
+    with allure.step("Verify response status and resource data"):
+        assert response.status_code == 200
 
-    resources = ReqresResourcesResponse.model_validate(response.json())
-    assert resources.data
+        resources = ReqresResourcesResponse.model_validate(response.json())
+        assert resources.data
 
-    for resource in resources.data:
-        assert resource.name
-        assert resource.year >= 2000
+        for resource in resources.data:
+            assert resource.name
+            assert resource.year >= 2000

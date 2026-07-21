@@ -1,11 +1,12 @@
+import allure
 import pytest
 
 from pages.selenium.github.selenium_cicd_page import SeleniumGithubCiCdPage
-from pages.selenium.github.selenium_contact_sales_page import \
-    SeleniumGithubContactSalesPage
+from pages.selenium.github.selenium_contact_sales_page import (
+    SeleniumGithubContactSalesPage,
+)
 from pages.selenium.github.selenium_home_page import SeleniumGithubHomePage
-from pages.selenium.github.selenium_solutions_menu import \
-    SeleniumGithubSolutionMenu
+from pages.selenium.github.selenium_solutions_menu import SeleniumGithubSolutionMenu
 
 
 @pytest.mark.ui
@@ -28,11 +29,14 @@ def test_contact_sales_form(browser, fake):
     last_name = fake.last_name()
     contact_page.fill_form(first_name, last_name)
 
-    assert (
-        contact_page.get_field_value(SeleniumGithubContactSalesPage.FIRST_NAME_FIELD)
-        == first_name
-    )
-    assert (
-        contact_page.get_field_value(SeleniumGithubContactSalesPage.LAST_NAME_FIELD)
-        == last_name
-    )
+    with allure.step("Verify form fields contain entered values"):
+        assert (
+            contact_page.get_field_value(
+                SeleniumGithubContactSalesPage.FIRST_NAME_FIELD
+            )
+            == first_name
+        )
+        assert (
+            contact_page.get_field_value(SeleniumGithubContactSalesPage.LAST_NAME_FIELD)
+            == last_name
+        )

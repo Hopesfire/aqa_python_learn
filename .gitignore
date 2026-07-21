@@ -1,6 +1,12 @@
 venv/
 __pycache__/
 .pytest_cache/
+.mypy_cache/
 .idea/
 .vscode/
 .env
+reports/
+report.html
+assets
+allure-results/
+allure-report/

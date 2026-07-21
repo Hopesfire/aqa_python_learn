@@ -1,7 +1,9 @@
+import allure
 import pytest
 
-from pages.selenium.duckduckgo.selenium_duckduckgo_search_page import \
-    SeleniumDuckduckgoSearchPage
+from pages.selenium.duckduckgo.selenium_duckduckgo_search_page import (
+    SeleniumDuckduckgoSearchPage,
+)
 
 
 @pytest.mark.ui
@@ -15,5 +17,6 @@ def test_duckduckgo_search(browser, query):
     search_page.open()
     search_page.search(query)
 
-    results = search_page.get_results()
-    assert len(results) > 5
+    with allure.step("Verify search results are displayed"):
+        results = search_page.get_results()
+        assert len(results) > 5
