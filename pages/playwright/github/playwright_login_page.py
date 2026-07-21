@@ -16,11 +16,11 @@ class PlaywrightGithubLoginPage(PlaywrightGithubBasePage):
     def open_login_page(self):
         self.page.goto(self.base_url + "/login")
 
-    @allure.step("Login with username '{username}'")
     def login(self, username, password):
-        self.page.get_by_label(self.USERNAME_LABEL).fill(username)
-        self.page.get_by_label(self.PASSWORD_LABEL).fill(password)
-        self.page.locator(self.SIGNIN_SELECTOR).click()
+        with allure.step(f"Login with username '{username}'"):
+            self.page.get_by_label(self.USERNAME_LABEL).fill(username)
+            self.page.get_by_label(self.PASSWORD_LABEL).fill(password)
+            self.page.locator(self.SIGNIN_SELECTOR).click()
 
     def alert_locator(self):
         return self.page.locator(self.ALERT_SELECTOR)
