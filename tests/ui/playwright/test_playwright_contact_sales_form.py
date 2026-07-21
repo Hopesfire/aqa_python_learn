@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from pages.playwright.github.playwright_cicd_page import PlaywrightGithubCiCdPage
@@ -30,11 +31,16 @@ def test_contact_sales_form(page, fake):
     last_name = fake.last_name()
     contact_page.fill_form(first_name, last_name)
 
-    assert (
-        contact_page.get_field_value(PlaywrightGithubContactSalesPage.FIRST_NAME_FIELD)
-        == first_name
-    )
-    assert (
-        contact_page.get_field_value(PlaywrightGithubContactSalesPage.LAST_NAME_FIELD)
-        == last_name
-    )
+    with allure.step("Verify form fields contain entered values"):
+        assert (
+            contact_page.get_field_value(
+                PlaywrightGithubContactSalesPage.FIRST_NAME_FIELD
+            )
+            == first_name
+        )
+        assert (
+            contact_page.get_field_value(
+                PlaywrightGithubContactSalesPage.LAST_NAME_FIELD
+            )
+            == last_name
+        )

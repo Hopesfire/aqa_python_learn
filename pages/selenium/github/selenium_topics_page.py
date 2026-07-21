@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from pages.selenium.github.selenium_base_page import SeleniumGithubBasePage
@@ -11,6 +12,7 @@ class SeleniumGithubTopicsPage(SeleniumGithubBasePage):
         "python",
     }
 
+    @allure.step("Open GitHub topics page")
     def open_topics_page(self):
         self.driver.get(self.base_url + "/topics")
 

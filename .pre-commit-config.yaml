@@ -29,4 +29,3 @@ repos:
       additional_dependencies:
           - pydantic
           - types-requests
-      files: ^tests/

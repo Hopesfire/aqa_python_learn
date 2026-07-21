@@ -1,3 +1,4 @@
+import allure
 import pytest
 from playwright.sync_api import expect
 
@@ -18,9 +19,10 @@ def test_success_login(page):
     login_page.open_login_page()
     login_page.login(USERNAME, PASSWORD)
 
-    avatar = login_page.avatar_locator()
-    expect(avatar).to_be_visible()
-    expect(avatar).to_be_enabled()
+    with allure.step("Verify avatar is visible after login"):
+        avatar = login_page.avatar_locator()
+        expect(avatar).to_be_visible()
+        expect(avatar).to_be_enabled()
 
 
 @pytest.mark.ui
@@ -43,6 +45,7 @@ def test_invalid_login(page, username, password):
     login_page.open_login_page()
     login_page.login(username, password)
 
-    error = login_page.alert_locator()
-    expect(error).to_be_visible()
-    expect(error).to_contain_text(PlaywrightGithubLoginPage.EXPECTED_ERROR_TEXT)
+    with allure.step("Verify error message is shown"):
+        error = login_page.alert_locator()
+        expect(error).to_be_visible()
+        expect(error).to_contain_text(PlaywrightGithubLoginPage.EXPECTED_ERROR_TEXT)

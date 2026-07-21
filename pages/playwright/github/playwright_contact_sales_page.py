@@ -1,3 +1,5 @@
+import allure
+
 from pages.playwright.github.playwright_base_page import PlaywrightGithubBasePage
 
 
@@ -9,6 +11,7 @@ class PlaywrightGithubContactSalesPage(PlaywrightGithubBasePage):
     def open_contact_sales_page(self):
         self.page.goto(self.base_url + "/enterprise/contact")
 
+    @allure.step("Fill contact sales form")
     def fill_form(self, first_name, last_name):
         self.page.locator(self.FIRST_NAME_FIELD).fill(first_name)
         self.page.locator(self.LAST_NAME_FIELD).fill(last_name)

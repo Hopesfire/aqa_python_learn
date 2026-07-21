@@ -1,5 +1,6 @@
 import os
 
+import allure
 import pytest
 from faker import Faker
 from playwright.sync_api import sync_playwright
@@ -36,3 +37,38 @@ def page():
 @pytest.fixture
 def fake():
     return Faker()
+
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+
+    if report.when != "call" or not report.failed:
+        return
+
+    playwright_page = item.funcargs.get("page")
+    if playwright_page:
+        allure.attach(
+            playwright_page.screenshot(full_page=True),
+            name=f"screenshot_{item.name}",
+            attachment_type=allure.attachment_type.PNG,
+        )
+        allure.attach(
+            playwright_page.content(),
+            name="page_html",
+            attachment_type=allure.attachment_type.HTML,
+        )
+
+    selenium_driver = item.funcargs.get("browser")
+    if selenium_driver:
+        allure.attach(
+            selenium_driver.get_screenshot_as_png(),
+            name=f"screenshot_{item.name}",
+            attachment_type=allure.attachment_type.PNG,
+        )
+        allure.attach(
+            selenium_driver.page_source,
+            name="page_html",
+            attachment_type=allure.attachment_type.HTML,
+        )
