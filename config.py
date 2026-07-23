@@ -2,7 +2,8 @@ import os
 
 from dotenv import load_dotenv
 
-load_dotenv()
+if os.path.exists(".env"):
+    load_dotenv()
 
 USERNAME = os.getenv("GH_USER")
 PASSWORD = os.getenv("GH_PASS")
