@@ -11,6 +11,7 @@ class PlaywrightGithubLoginPage(PlaywrightGithubBasePage):
     AVATAR_TEST_ID = "github-avatar"
     ALERT_SELECTOR = "[role='alert']"
     EXPECTED_ERROR_TEXT = "Incorrect username or password"
+    DEVICE_VERIFICATION_SELECTOR = "#device-verification-prompt"
 
     @allure.step("Open GitHub login page")
     def open_login_page(self):
@@ -27,3 +28,6 @@ class PlaywrightGithubLoginPage(PlaywrightGithubBasePage):
 
     def avatar_locator(self):
         return self.page.get_by_test_id(self.AVATAR_TEST_ID)
+
+    def device_verification_locator(self):
+        return self.page.locator(self.DEVICE_VERIFICATION_SELECTOR)

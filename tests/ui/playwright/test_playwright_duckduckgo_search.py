@@ -18,6 +18,9 @@ def test_duckduckgo_search(page, query):
     search_page.open()
     search_page.search(query)
 
+    if search_page.captcha_locator().is_visible():
+        pytest.xfail("DuckDuckGo bot challenge appeared")
+
     with allure.step("Verify search results are displayed"):
         results = search_page.get_results()
         expect(results.nth(5)).to_be_visible()

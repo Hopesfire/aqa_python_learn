@@ -19,6 +19,9 @@ def test_success_login(page):
     login_page.open_login_page()
     login_page.login(USERNAME, PASSWORD)
 
+    if login_page.device_verification_locator().is_visible():
+        pytest.xfail("Requires external authentication verification")
+
     with allure.step("Verify avatar is visible after login"):
         avatar = login_page.avatar_locator()
         expect(avatar).to_be_visible()

@@ -8,9 +8,10 @@ from pages.selenium.duckduckgo.selenium_duckduckgo_base_page import (
 
 class SeleniumDuckduckgoSearchPage(SeleniumDuckduckgoBasePage):
 
-    SEARCH_FORM = (By.ID, "searchbox_input")
+    SEARCH_FORM = (By.CSS_SELECTOR, "input[data-ssg-id='ai-searchbox-input']")
     SEARCH_BUTTON = (By.CSS_SELECTOR, 'button[data-mode="search"]')
     RESULTS_TEST_ID = (By.CSS_SELECTOR, '[data-testid="result-title-a"]')
+    CAPTCHA_TEST_ID = (By.CSS_SELECTOR, '[data-testid="anomaly-modal"]')
 
     @allure.step("Open DuckDuckGo home page")
     def open(self):
@@ -23,3 +24,9 @@ class SeleniumDuckduckgoSearchPage(SeleniumDuckduckgoBasePage):
 
     def get_results(self):
         return self.find_elements(self.RESULTS_TEST_ID)
+
+    def is_captcha_present(self):
+        try:
+            return self.driver.find_element(*self.CAPTCHA_TEST_ID).is_displayed()
+        except Exception:
+            return False

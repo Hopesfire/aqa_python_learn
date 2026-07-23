@@ -18,6 +18,9 @@ def test_success_login(browser):
     login_page.open_login_page()
     login_page.login(USERNAME, PASSWORD)
 
+    if login_page.is_device_verification_present():
+        pytest.xfail("Requires external authentication verification")
+
     with allure.step("Verify login was successful"):
         assert login_page.is_login_successful()
 
