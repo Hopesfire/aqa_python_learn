@@ -15,6 +15,7 @@ def browser():
         options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
     driver = webdriver.Chrome(options=options)
 
     yield driver
@@ -27,10 +28,15 @@ def page():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=bool(os.getenv("CI")))
 
-        page = browser.new_page()
+        context = browser.new_context(
+            viewport={"width": 1920, "height": 1080} if os.getenv("CI") else None
+        )
+
+        page = context.new_page()
 
         yield page
 
+        context.close()
         browser.close()
 
 

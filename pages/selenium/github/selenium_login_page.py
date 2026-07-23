@@ -12,6 +12,7 @@ class SeleniumGithubLoginPage(SeleniumGithubBasePage):
     AVATAR_TEST_ID = (By.CSS_SELECTOR, "[data-testid='github-avatar']")
     ALERT_SELECTOR = (By.CSS_SELECTOR, "[role='alert']")
     EXPECTED_ERROR_TEXT = "Incorrect username or password"
+    DEVICE_VERIFICATION_SELECTOR = (By.ID, "device-verification-prompt")
 
     @allure.step("Open GitHub login page")
     def open_login_page(self):
@@ -31,6 +32,14 @@ class SeleniumGithubLoginPage(SeleniumGithubBasePage):
 
     def is_login_successful(self):
         return self.avatar_locator().is_displayed()
+
+    def is_device_verification_present(self):
+        try:
+            return self.driver.find_element(
+                *self.DEVICE_VERIFICATION_SELECTOR
+            ).is_displayed()
+        except Exception:
+            return False
 
     def is_alert_present(self):
         return self.alert_locator().is_displayed()
