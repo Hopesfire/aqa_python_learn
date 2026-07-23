@@ -13,6 +13,7 @@ class PlaywrightGithubContactSalesPage(PlaywrightGithubBasePage):
 
     @allure.step("Fill contact sales form")
     def fill_form(self, first_name, last_name):
+        self.page.wait_for_load_state("domcontentloaded")
         self.page.locator(self.FIRST_NAME_FIELD).fill(first_name)
         self.page.locator(self.LAST_NAME_FIELD).fill(last_name)
 
